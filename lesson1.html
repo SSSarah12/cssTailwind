@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- to work with talwindCss -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> 
+    
+    <!-- for dark mode -->
+     <style type="text/tailwindcss">
+           @custom-variant dark (&:where(.dark, .dark *));
+     </style>
+
+     <!-- icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+</head>
+
+    <title>Spacing ,Colors & Typography</title>
+</head>
+<body class="bg-gray-900 text-white p-10 dark:text-gray-100 dark:bg-gray-100"> 
+
+
+    <!-- button DARK MODE -->
+    
+    <section class="header  z-60 dark:shadow-2xl bg-blue-700 dark:bg-amber-100">
+        <span class="text-xl text-amber-400 font-black block dark:text-slate-500">CSS Tailwind</span>
+
+        <div class="flex items-center gap-2">
+        <button onclick="document.documentElement.classList.toggle('dark')"
+                    class=" bg-gray-900 rounded right-10 top-10 w-fit h-fit p-2 text-gray-100 text-3xl
+                           dark:bg-slate-50 "
+                id="darkLight"
+             >
+        
+            
+                <span class="inline dark:hidden">☀️</span><span class="hidden dark:inline">🌑</span>
+                
+            
+        </button> 
+        
+        <span class="transition dutation-100" id="icon"><i class="fa-solid fa-bars fa-lg fa-width-auto" style="color: rgb(255, 212, 59);" id="menuButton"></i></span>
+        </div>
+    </section>
+    
+
+        
+
+
+    
+
+    <style>
+        *{
+            list-style: none;
+        }
+        html {
+            scroll-padding-top: 100px;
+            scroll-behavior: smooth;
+        }
+        #flexUtilities{
+            width: 100%;
+            background-color: white;
+            display: block;
+            margin: auto;
+        }
+        
+        .activeButtons{
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+        }
+        #buttonDown, 
+        #buttonUp,
+        #buttonRight,
+        #buttonLeft{
+            cursor: pointer;
+        }
+        #opacityDiv{
+            background: url(folderofImages/lesson1/background.png);
+            height: fit-content;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        #div1{
+            background-color: #7D4FFE;
+        }
+        #div2{
+            background-color: #C49FFF;
+        }
+        #div3{
+            background-color: #FFD0E6;
+        }
+        #div4{
+            background-color: #FF9CB6;
+        }
+        #div5{
+            background-color: #F08488;
+        }
+        .header{
+           
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top:0;
+            left:0;
+            padding: 20px;
+            width: 100%;
+        }
+        .navbar.active{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            flex-direction: column;
+            padding: 20px 10px;
+            background-color: rgba(108, 107, 107, 0.613);
+            color: white;
+            position: fixed;
+            top: 80px;
+            right:0;
+            border-top-left-radius: 20px;
+            height: fit-content;
+            width: fit-content;
+            z-index: 70;
+            transition: 0.2s;
+        }
+        .navbar{
+            display: none;
+        }
+        .navbar li a{
+            border-bottom: 2px solid transparent ;
+        }
+        .navbar li a:hover{
+            cursor: pointer;
+            border-bottom: 2px solid blue;
+            color: rgb(255, 191, 53);
+        }
+        .flipIcon{
+            transform: rotate(90deg);
+            transition: transform 0.4s;
+        }
+
+    </style>
+
+ 
+
+        <nav class="navbar " id="navbar">
+            <ul>
+                <li><a href="#width">Width</a></li>
+                <li><a href="#padding">Padding</a></li>
+                <li><a href="#margin">Margin</a></li>
+                <li><a href="#gap">Gap</a></li>
+                <li><a href="#colors">Colors</a></li>
+                <li><a href="#fontsize">Font-Size</a></li>
+                <li><a href="#fontweight">Font-Weight</a></li>
+                <li><a href="#borderradius">Border-Radius</a></li>
+                <li><a href="#boxshadow">Box-Shadow</a></li>
+                <li><a href="#breakpoints">Responsive BreakPoints</a></li>
+                <li><a href="#flexbox">Flex Box</a></li>
+                <li><a href="#grid">Grid</a></li>
+                <li><a href="#positiondisplay">Position & Display</a></li>
+                <li><a href="#width&">Width & Height</a></li>
+                <li><a href="#opacity">Opacity</a></li>
+                <li><a href="#z-index">Z-index</a></li>
+                <li><a href="#transition">Transitions & Animation</a></li>
+                <li><a href="#state">State Variants</a></li>
+                <li><a href="#card">PortFolio Card</a></li>
+            </ul>
+        </nav>
+
+    
+    
+
+    <!-- WIDTH -->
+    <section id="width">
+     <h2 class="text-lg font-semibold text-amber-400 mb-4 dark:text-blue-700 mt-20">1. Width (Largeur)</h2>
+    <div class="space-y-2 mb-10">
+
+        <div class="flex items-center gap-3">
+            <span class="w-16 text-xs font-mono bg-gray-800 px-2 py-1 rounded dark:text-gray-200">w-2</span>
+            <div class="w-2 h-5 bg-amber-400 rounded"></div>
+            <span class="text-xs text-gray-400">8px</span>
+        </div> 
+        <div class="flex items-center gap-3">
+            <span class="w-16 text-xs font-mono bg-gray-800 px-2 py-1 rounded">w-4</span>
+            <div class="w-4 h-5 bg-amber-400 rounded"></div>
+            <span class="text-xs text-gray-400">16px</span>
+        </div> 
+        <div class="flex items-center gap-3">
+            <span class="w-16 text-xs font-mono bg-gray-800 px-2 py-1 rounded">w-8</span>
+            <div class="w-8 h-5 bg-amber-400 rounded"></div>
+            <span class="text-xs text-gray-400">32px</span>
+        </div> 
+        <div class="flex items-center gap-3">
+            <span class="w-16 text-xs font-mono bg-gray-800 px-2 py-1 rounded">w-16</span>
+            <div class="w-16 h-5 bg-amber-400 rounded"></div>
+            <span class="text-xs text-gray-400">64px</span>
+        </div> 
+        <div class="flex items-center gap-3">
+            <span class="w-16 text-xs font-mono bg-gray-800 px-2 py-1 rounded">w-32</span>
+            <div class="w-32 h-5 bg-amber-400 rounded"></div>
+            <span class="text-xs text-gray-400">128px</span>
+        </div>
+
+    </div>
+    </section> 
+    <!-- padding -->
+    <section id="padding" class="">
+    <h2 class="text-lg font-semibold text-amber-400 mb-4 dark:text-blue-700">2. Padding (espace interieure)</h2>
+
+    <div class="flex flex-wrap gap-6 mb-10">
+
+        <div class="bg-gray-800 p-1 rounded" >
+            <div class="bg-blue-600 text-xs px-2 py-1 rounded">p-1</div>
+        </div>
+        <div class="bg-gray-800 p-4 rounded" >
+            <div class="bg-blue-600 text-xs px-2 py-1 rounded">p-4</div>
+        </div>
+        <div class="bg-gray-800 p-8 rounded" >
+            <div class="bg-blue-600 text-xs px-2 py-1 rounded">p-8</div>
+        </div>
+
+    </div>
+    </section>
+    <!-- margin -->
+
+    <section id="margin">
+    <h2 class="text-lg font-semibold text-amber-400 mb-4 dark:text-blue-700">3. Margin (espace exterieure)</h2>
+
+    <div class="bg-gray-800 rounded p-2 mb-10" >
+        <div class="bg-blue-600 text-xs px-2 py-1 inline-block rounded m-1">m-1</div>
+        <div class="bg-blue-600 text-xs px-2 py-1 inline-block rounded m-4">m-4</div>
+        <div class="bg-blue-600 text-xs px-2 py-1 inline-block rounded m-8">m-8</div>
+        <div class="bg-blue-600 text-xs px-2 py-1 inline-block rounded m-16">m-16</div>
+    </div>
+    </section>
+
+    <!-- Gap (espace flex/grid) -->
+
+    <section id="gap">
+    <h2 class="text-lg font-semibold text-amber-400 mb-4 dark:text-blue-700">4. Gap (espace entre elements flex/grid)</h2>
+    <div class="flex gap-1 mb-3">
+
+        <div class="flex gap-1 mb-3">
+            <div class="bg-blue-600 w-10 h-10 rounded"></div>
+            <div class="bg-blue-600 w-10 h-10 rounded"></div>
+            <div class="bg-blue-600 w-10 h-10 rounded"></div>
+            <span class="text-xs text-gray-400 ml-2 self-center">gap 1</span>
+        </div>
+
+    </div>
+    <div class="flex gap-6 mb-3">
+        <div class="w-10 h-10 bg-amber-400 rounded"></div>
+        <div class="w-10 h-10 bg-amber-400 rounded"></div>
+        <div class="w-10 h-10 bg-amber-400 rounded"></div>
+        <span class="text-xs self-center text-gray-400 ml-2">gap 6</span>
+    </div>
+    </section>
+
+
+    <!-- colors -->
+
+    <section id="colors">
+    <h2 class="text-lg font-semibold text-amber-400 mb-4 mt-4">5. Colors</h2>
+    <div class="space-y-2 mb-6">
+
+        <h3 >slate</h3>
+        <div class="flex gap-4 mx-1">
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-slate-300"></div>
+                <span class="text-xs text-white-400">300</span>
+                <span class="text-xs text-gray-400 ">#cbd5e1</span>
+            </div>
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-slate-700"></div>
+                <span class="text-xs text-white-400">700</span>
+                <span class="text-xs text-gray-400">#334155</span>
+            </div>
+        </div>
+        <h3 >stone</h3>
+        <div class="flex gap-4 mx-1">
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-stone-500"></div>
+                <span class="text-xs text-white-400">500</span>
+                <span class="text-xs text-gray-400 ">#78716c</span>
+            </div>
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-stone-800"></div>
+                <span class="text-xs text-white-400">800</span>
+                <span class="text-xs text-gray-400">#292524</span>
+            </div>
+        </div>
+        <h3 >red</h3>
+        <div class="flex gap-4 mx-1">
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-red-300"></div>
+                <span class="text-xs text-white-400">300</span>
+                <span class="text-xs text-gray-400 ">#fca5a5</span>
+            </div>
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-red-900"></div>
+                <span class="text-xs text-white-400">900</span>
+                <span class="text-xs text-gray-400">#7f1d1d</span>
+            </div>
+        </div>
+        <h3 >orange</h3>
+        <div class="flex gap-4 mx-1">
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-orange-400"></div>
+                <span class="text-xs text-white-400">400</span>
+                <span class="text-xs text-gray-400 ">#fb923c</span>
+            </div>
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-orange-600"></div>
+                <span class="text-xs text-white-400">600</span>
+                <span class="text-xs text-gray-400">#ea580c</span>
+            </div>
+        </div>
+        <h3 >yellow</h3>
+        <div class="flex gap-4 mx-1">
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-yellow-100"></div>
+                <span class="text-xs text-white-400">100</span>
+                <span class="text-xs text-gray-400 ">#fef9c3</span>
+            </div>
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-yellow-500"></div>
+                <span class="text-xs text-white-400">500</span>
+                <span class="text-xs text-gray-400">#eab308</span>
+            </div>
+        </div>
+        <h3 >lime</h3>
+        <div class="flex gap-4 mx-1">
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-lime-400"></div>
+                <span class="text-xs text-white-400">400</span>
+                <span class="text-xs text-gray-400 ">#a3e635</span>
+            </div>
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-lime-950"></div>
+                <span class="text-xs text-white-400">950</span>
+                <span class="text-xs text-gray-400">#1a2e05</span>
+            </div>
+        </div>
+        <h3 >emerald</h3>
+        <div class="flex gap-4 mx-1">
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-emerald-300"></div>
+                <span class="text-xs text-white-400">300</span>
+                <span class="text-xs text-gray-400 ">#6ee7b7</span>
+            </div>
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-emerald-600"></div>
+                <span class="text-xs text-white-400">600</span>
+                <span class="text-xs text-gray-400">#059669</span>
+            </div>
+        </div>
+        <h3 >teal</h3>
+        <div class="flex gap-4 mx-1">
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-teal-100"></div>
+                <span class="text-xs text-white-400">100</span>
+                <span class="text-xs text-gray-400 ">#ccfbf1</span>
+            </div>
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-teal-400"></div>
+                <span class="text-xs text-white-400">400</span>
+                <span class="text-xs text-gray-400">#2dd4bf</span>
+            </div>
+        </div>
+        <h3 >sky</h3>
+        <div class="flex gap-4 mx-1">
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-sky-400"></div>
+                <span class="text-xs text-white-400">400</span>
+                <span class="text-xs text-gray-400 ">#38bdf8</span>
+            </div>
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-sky-900"></div>
+                <span class="text-xs text-white-400">900</span>
+                <span class="text-xs text-gray-400">#0c4a6e</span>
+            </div>
+        </div>
+        <h3 >violet</h3>
+        <div class="flex gap-4 mx-1">
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-violet-300"></div>
+                <span class="text-xs text-white-400">300</span>
+                <span class="text-xs text-gray-400 ">#c4b5fd</span>
+            </div>
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-violet-700"></div>
+                <span class="text-xs text-white-400">700</span>
+                <span class="text-xs text-gray-400">#6d28d9</span>
+            </div>
+        </div>
+        <h3 >fuchsia</h3>
+        <div class="flex gap-4 mx-1">
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-fuchsia-500"></div>
+                <span class="text-xs text-white-400">500</span>
+                <span class="text-xs text-gray-400 ">#d946ef</span>
+            </div>
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-fuchsia-900"></div>
+                <span class="text-xs text-white-400">900</span>
+                <span class="text-xs text-gray-400">#701a75</span>
+            </div>
+        </div>
+        <h3 >rose</h3>
+        <div class="flex gap-4 mx-1">
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-rose-400"></div>
+                <span class="text-xs text-white-400">400</span>
+                <span class="text-xs text-gray-400 ">#fb7185</span>
+            </div>
+            <div class="flex flex-col gap-1 items-center">
+                <div class="w-64 h-10 rounded inline-block bg-rose-600"></div>
+                <span class="text-xs text-white-400">600</span>
+                <span class="text-xs text-gray-400">#e11d48</span>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section id="fontsize">
+    <h2 class="text-lg font-semibold text-amber-400 dark:text-blue-700">6. Font Size</h2>
+    <div class="space-y-2 mb-4 mt-4">
+
+        <div class="flex border-2 border-gray-800 p-2 rounded items-center justify-between w-full">
+
+            <div class="flex items-center gap-2">
+                <div class="bg-gray-700 pr-8 pl-1 rounded py-1">text-xs</div>
+                <div class="self-center ml-1 text-xs dark:text-stone-950">Aa Bb Cc</div>
+            </div>
+            
+            <span class="self-center  text-xs pl-128 mr-0 dark:text-stone-950">12px</span>
+        </div>
+        <div class="flex border-2 border-gray-800 p-2 rounded items-center justify-between w-full">
+
+            <div class="flex items-center gap-2">
+                <div class="bg-gray-700 pr-8 pl-1 rounded py-1">text-base</div>
+                <div class="self-center ml-1 text-base dark:text-stone-950">Aa Bb Cc</div>
+            </div>
+            
+            <span class="self-center  text-base pl-128 mr-0 dark:text-stone-950">14px</span>
+        </div>
+        <div class="flex border-2 border-gray-800 p-2 rounded items-center justify-between w-full">
+
+            <div class="flex items-center gap-2">
+                <div class="bg-gray-700 pr-8 pl-1 rounded py-1">text-xl</div>
+                <div class="self-center ml-1 text-xl dark:text-stone-950">Aa Bb Cc</div>
+            </div>
+            
+            <span class="self-center  text-xl pl-128 mr-0 dark:text-stone-950">20px</span>
+        </div>
+        <div class="flex border-2 border-gray-800 p-2 rounded items-center justify-between w-full">
+
+            <div class="flex items-center gap-2">
+                <div class="bg-gray-700 pr-8 pl-1 rounded py-1">text-5xl</div>
+                <div class="self-center ml-1 text-5xl dark:text-stone-950">Aa Bb Cc</div>
+            </div>
+            
+            <span class="self-center  text-5xl pl-128 mr-0 dark:text-stone-950">48px</span>
+        </div>
+
+    </div>
+     </section>
+
+    <!-- font weight -->
+     <section id="fontweight">
+    <h1 class="text-lg text-amber-400 mb-4 dark:text-blue-700">7. Font Weight</h1>
+
+    <div class="grid grid-cols-3 gap-1 mb-4 ">
+        <div class="border-stone-500  rounded border-1 bg-gray-800 flex gap-4 items-center justify-between px-2 py-1">
+            <span class="font-thin">Weight</span>
+            <div class="bg-gray-700 self-center p-2 font-thin rounded">font-thin . 100</div>
+        </div>
+        <div class="border-stone-500 rounded border-1 bg-gray-800 flex gap-4 items-center justify-between px-2 py-1">
+            <span class="font-normal">Weight</span>
+            <div class="bg-gray-700 self-center p-2 font-normal rounded">font-normal . 500</div>
+        </div>
+        <div class="border-stone-500 rounded border-1 bg-gray-800 flex gap-4 items-center justify-between px-2 py-1">
+            <span class="font-semibold">Weight</span>
+            <div class="bg-gray-700 self-center p-2 font-semibold rounded">font-semibold . 600</div>
+        </div>
+        <div class="border-stone-500 rounded border-1 bg-gray-800 flex gap-4 items-center justify-between px-2 py-1">
+            <span class="font-bold">Weight</span>
+            <div class="bg-gray-700 self-center p-2 font-bold rounded">font-bold . 700</div>
+        </div>
+        <div class="border-stone-500 rounded border-1 bg-gray-800 flex gap-4 items-center justify-between px-2 py-1">
+            <span class="font-extrabold">Weight</span>
+            <div class="bg-gray-700 self-center p-2 font-extrabold rounded">font-semibold . 800</div>
+        </div>
+        <div class="border-stone-500 rounded border-1 bg-gray-800 flex gap-4 items-center justify-between px-2 py-1">
+            <span class="font-black">Weight</span>
+            <div class="bg-gray-700 self-center p-2 font-black rounded">font-black . 900</div>
+        </div>
+        
+    </div>
+    </section>
+
+    <!-- Border Radius -->
+     <section id="borderradius">
+    <h1 class="text-lg text-amber-400 mb-4 dark:text-blue-700">8. Border Radius</h1>
+
+    <div class="flex gap-2">
+
+        <div class="flex flex-col fap-2">
+            <div class="w-24 h-16 bg-amber-400 rounded-none"></div>
+            <span class="text-xs text-gray-400 self-center">rounded-none</span>
+        </div>
+        <div class="flex flex-col fap-2">
+            <div class="w-24 h-16 bg-amber-400 rounded-sm"></div>
+            <span class="text-xs text-gray-400 self-center">rounded-sm</span>
+
+        </div>
+        <div class="flex flex-col fap-2">
+            <div class="w-24 h-16 bg-amber-400 rounded"></div>
+            <span class="text-xs text-gray-400 self-center">rounded</span>
+        </div>
+        <div class="flex flex-col fap-2">
+            <div class="w-24 h-16 bg-amber-400 rounded-md"></div>
+            <span class="text-xs text-gray-400 self-center">rounded-md</span>
+        </div>
+
+        <div class="flex flex-col fap-2">
+            <div class="w-24 h-16 bg-amber-400 rounded-lg"></div>
+            <span class="text-xs text-gray-400 self-center">rounded-lg</span>
+        </div>
+        <div class="flex flex-col fap-2">
+            <div class="w-24 h-16 bg-amber-400 rounded-xl"></div>
+            <span class="text-xs text-gray-400 self-center">rounded-xl</span>
+        </div>
+        <div class="flex flex-col fap-2">
+            <div class="w-24 h-16 bg-amber-400 rounded-2xl"></div>
+            <span class="text-xs text-gray-400 self-center">rounded-2xl</span>
+        </div>
+
+        
+        <div class="flex flex-col fap-2">
+            <div class="w-24 h-16 bg-amber-400 rounded-3xl"></div>
+            <span class="text-xs text-gray-400 self-center">rounded-3xl</span>
+        </div>
+        <div class="flex flex-col fap-2">
+            <div class="w-24 h-16 bg-amber-400 rounded-full"></div>
+            <span class="text-xs text-gray-400 self-center">rounded-full</span>
+        </div>
+        
+    </div>
+    </section>
+
+    <!-- Shadows -->
+     <section id="boxshadow">
+    <h1 class="text-lg text-amber-400 mb-4 dark:text-blue-700">9. Box Shadow</h1>
+    <div class="grid grid-cols-4 gap-3 mb-4">
+
+        <div class="flex flex-col gap-3 ">
+            <div class="h-20 bg-emerald-300 shadow-emerald-600 shadow-sm"></div>
+            <span class="text-xs text-yellow-500 self-center">shadow-sm</span>
+        </div>
+        <div class="flex flex-col gap-3 ">
+            <div class="h-20 bg-emerald-300 shadow-emerald-600 shadow"></div>
+            <span class="text-xs text-yellow-500 self-center">shadow</span>
+        </div>
+        <div class="flex flex-col gap-3 ">
+            <div class="h-20 bg-emerald-300 shadow-emerald-600 shadow-md"></div>
+            <span class="text-xs text-yellow-500 self-center">shadow-md</span>
+        </div>
+
+        <div class="flex flex-col gap-3 ">
+            <div class="h-20 bg-emerald-300 shadow-emerald-600 shadow-lg"></div>
+            <span class="text-xs text-yellow-500 self-center">shadow-lg</span>
+        </div>
+        <div class="flex flex-col gap-3 ">
+            <div class="h-20 bg-emerald-300 shadow-emerald-600 shadow-xl"></div>
+            <span class="text-xs text-yellow-500 self-center">shadow-xl</span>
+        </div>
+        <div class="flex flex-col gap-3 ">
+            <div class="h-20 bg-emerald-300 shadow-emerald-600 shadow-2xl"></div>
+            <span class="text-xs text-yellow-500 self-center">shadow-2xl</span>
+        </div>
+
+        <div class="flex flex-col gap-3 ">
+            <div class="h-20 bg-emerald-300 shadow-emerald-600 shadow-inner"></div>
+            <span class="text-xs text-yellow-500 self-center">shadow-inner</span>
+        </div>
+        <div class="flex flex-col gap-3 ">
+            <div class="h-20 bg-emerald-300 shadow-emerald-600 shadow-none"></div>
+            <span class="text-xs text-yellow-500 self-center">shadow-none</span>
+        </div>
+        
+    </div>
+    </section>
+
+    <!-- Responsive BreakPoints -->
+    <section id="breakpoints">
+     <h1 class="text-lg text-amber-400 mb-4 dark:text-blue-700">10. Responsive BreakPoints</h1>
+     <div class="flex  gap-4 self-center">
+
+        <div class="flex flex-col gap-3 px-4 py-2 bg-gray-800 border-stone-500 self-center items-center">
+            <span class="text-amber-400">sm:</span>
+            <span class="text-stone-500">>= 640px</span>
+        </div>
+        <div class="flex flex-col gap-3 px-4 py-2 bg-gray-800 border-stone-500 self-center items-center">
+            <span class="text-amber-400">md:</span>
+            <span class="text-stone-500">>= 768px</span>
+        </div>
+        <div class="flex flex-col gap-3 px-4 py-2 bg-gray-800 border-stone-500 self-center items-center">
+            <span class="text-amber-400">lg:</span>
+            <span class="text-stone-500">>= 1024px</span>
+        </div>
+        <div class="flex flex-col gap-3 px-4 py-2 bg-gray-800 border-stone-500 self-center items-center">
+            <span class="text-amber-400">xl:</span>
+            <span class="text-stone-500">>= 1280px</span>
+        </div>
+        <div class="flex flex-col gap-3 px-4 py-2 bg-gray-800 border-stone-500 self-center items-center">
+            <span class="text-amber-400">2xl:</span>
+            <span class="text-stone-500">>= 1536px</span>
+        </div>
+
+     </div>
+     <div class="block mt-4 self-center flex items-center mb-5">
+            <img src="folderofImages/lesson1/Responsive BreakPoints.png" alt="" class="rounded-lg w-120" >
+    </div>
+    <div class="h-fit px-2 py-1  rounded bg-sky-700
+               text-gray-100 text-sm   flex items-center justify-center md:text-base md:font-bold  md:text-gray-400 
+               lg:text-4xl lg:font-black lg:text-gray-900 mb-6">
+        Redimension the window to see the changes in the font-size
+    </div>
+    </section> 
+
+    <section id="flexbox">
+     <h1 class="text-lg text-amber-400 font-semibold dark:text-blue-700">11. Flexbox Utilities</h1>
+
+
+    
+        <div class="flex gap-140 mt-8 mb-4">
+            <span class="dark:text-stone-950">JUSTIFY-*</span>
+            <span class="dark:text-stone-950">ITEMS-*</span>
+        </div>
+        <div class="flex gap-80 mb-5">
+
+        
+        <div class="grid grid-cols-3 gap-1 ">
+            <div class="p-2 text-xs border-stone-500 bg-gray-800 rounded w-fit" id="justifyStart">justify-start</div>
+            <div class="p-2 text-xs border-stone-500 bg-gray-800 rounded w-fit" id="justifyEnd">justify-end</div>
+            <div class="p-2 text-xs border-stone-500 bg-gray-800 rounded w-fit" id="justifyCenter">justify-center</div>
+            <div class="p-2 text-xs border-stone-500 bg-gray-800 rounded w-fit" id="justifyBetween">justify-between</div>
+            <div class="p-2 text-xs border-stone-500 bg-gray-800 rounded w-fit" id="justifyAround">justify-around</div>
+            <div class="p-2 text-xs border-stone-500 bg-gray-800 rounded w-fit" id="justifyEvenly">justify-evenly</div>
+        </div>
+        <div class="grid grid-cols-3 gap-1">
+            <div class="p-2 text-xs border-stone-500 bg-gray-800 rounded w-fit" id="itemStart">items-start</div>
+            <div class="p-2 text-xs border-stone-500 bg-gray-800 rounded w-fit" id="itemEnd">items-end</div>
+            <div class="p-2 text-xs border-stone-500 bg-gray-800 rounded w-fit" id="itemCenter">items-center</div>
+            <div class="p-2 text-xs border-stone-500 bg-gray-800 rounded w-fit" id="itemBaseline">items-baseline</div>
+            <div class="p-2 text-xs border-stone-500 bg-gray-800 rounded w-fit" id="itemStretch">items-stretch</div>
+        </div>
+    </div>
+    <div class="h-50 bg-gray-400 px-5 py-1 flex items-center justify-center rounded-lg">
+        <div id="flexUtilities" class="h-[90%] w-[95%] self-center rounded-lg">
+        </div>
+        
+    </div>
+    <div class="bg-amber-400 h-10 p-2 rounded w-fit inline-block mt-4 text-base font-normal text-gray-900 flex justify-center items-center self-center" id="talwindExp">
+    </div>
+    </section>
+
+
+    <!-- Grid -->
+    <section id="grid">
+     <h1 class="text-lg font-semibold text-amber-400 mt-4 dark:text-blue-700">12. Grid Utilities</h1>
+    <span class="text-xs font-semibold text-gray-600 mb-8 dark:text-stone-950">GRID-COLS-*</span>
+
+
+    <div class="flex gap-2">
+        <div class="py-2 px-1 w-30 flex justify-center text-s border-2 border-gray-700 bg-gray-800 rounded" id="col1">grid-cols-1</div>
+        <div class="py-2 px-1 w-30 flex justify-center text-s border-2 border-gray-700 bg-gray-800 rounded" id="col2">grid-cols-2</div>
+        <div class="py-2 px-1 w-30 flex justify-center text-s border-2 border-gray-700 bg-gray-800 rounded" id="col4">grid-cols-4</div>
+        <div class="py-2 px-1 w-30 flex justify-center text-s border-2 border-gray-700 bg-gray-800 rounded" id="col6">grid-cols-6</div>
+        <div class="py-2 px-1 w-30 flex justify-center text-s border-2 border-gray-700 bg-gray-800 rounded" id="col8">grid-cols-8</div>
+        <div class="py-2 px-1 w-30 flex justify-center text-s border-2 border-gray-700 bg-gray-800 rounded" id="col12">grid-cols-12</div>
+    </div>
+    <div class="bg-gray-800 px-2 py-1 border-gray-700 border-1 mt-6 h-fit rounded" id="gridsContainer">
+        <div class="bg-amber-400 rounded text-gray-900 flex justify-center">1</div>
+    </div>
+    <div class="bg-amber-400 h-10 p-2 rounded w-fit inline-block mt-4 text-base font-normal text-gray-900 flex justify-center items-center self-center" id="talwindExp1">
+    </div>
+    </section>
+
+    <!-- Position & Display -->
+     <section id="positiondisplay">
+    <h1 class="text-lg text-amber-400 mb-4 mt-4 font-semibold dark:text-blue-700">13. Position & Display</h1>
+    <span class="text-gray-500 text-s ml-4 inline" >static . relative . absolute . sticky . fixed</span>
+
+
+    <span class="block mt-4 text-gray-400">RELATIVE + ABSOLUTE Badge</span>
+    <div class="grid grid-cols-1 gap-0 my-4 text-3xl">
+        <span class="text-gray-900 dark:text-gray-100" id="buttonDown" >-- 🔽</span>
+        <span></span>
+        <span class="text-gray-900 dark:text-gray-100"><span id="buttonRight" >▶️</span>....<span id="buttonLeft" >◀️</span></span>
+        <span class="text-gray-900 dark:text-gray-100" id="buttonUp" > -- 🔼</span>
+        
+        
+        
+    </div>
+    <div id="parent" class="relative h-32 bg-gray-800 rounded-md flex justify-center items-center text-s text-gray-400">
+        parent: relative
+        <div class="bg-amber-400 absolute h-fit px-2 rounded top-0 right-0  text-gray-900">absolute</div>
+    </div>
+    <div class="bg-amber-400 h-10 p-2 rounded w-fit inline-block mt-4 text-base font-normal text-gray-900 flex justify-center items-center self-center" id="talwindExp2">
+    </div>
+
+     <span class="text-gray-500 text-s ml-4 block mb-2" >DISPLAY: BLOCK / INLINE-BLOCK / FLEX / HIDDEN </span>
+     <div class=" px-2 py-1 bg-gray-800 rounded">
+        <span class="text-gray-200 font-medium inline">block</span>
+        <span class="text-gray-500 font-light inline">block</span>
+     </div>
+     <div class="flex flex-wrap mt-2 gap-2">
+        <div class="bg-gray-800 px-2 py-1 inline-block rounded">inline-block A</div>
+        <div class="bg-gray-800 px-2 py-1 inline-block rounded">inline-block B</div>
+     </div>
+     <div class="flex flex-wrap gap-2 mt-2">
+        <div class="px-2 py-1 flex justify-center items-center bg-gray-800 rounded">flex A</div>
+        <div class="px-2 py-1 flex justify-center items-center rounded bg-gray-800">flex B</div>
+     </div>
+     </section>
+
+
+     <!-- Width & Height -->
+    <section id="width&">
+    <h1 class="text-lg font-semibold text-amber-400 mt-4 inline-block dark:text-blue-700">14. Width & Height</h1>
+    <span class="text-gray-400 text-s text-font-semibold ml-2">fractions & keywords</span>
+    
+    <div class="flex gap-2 mb-2 items-center">
+        <div class="h-fit bg-gray-700 rounded w-16 py-1 px-1">w-full</div>
+        <span id="percentage1" class="ml-2 tex-gray-600"></span>
+    </div>
+    <div class="rounded h-8 bg-gray-800 rounded mb-4" id="pDiv1">
+        <div class="w-full h-8 bg-amber-400 rounded" id="cDiv1"></div>
+    </div>
+
+    <div class="flex gap-2 mb-2 items-center">
+        <div class="h-fit bg-gray-700 rounded w-16 py-1 px-1">w-3/4</div>
+        <span id="percentage2" class="ml-2 tex-gray-600"></span>
+    </div>
+    <div class="rounded h-8 bg-gray-800 rounded mb-4" id="pDiv2">
+        <div class="w-3/4 h-8 bg-amber-400 rounded" id="cDiv2"></div>
+    </div>
+
+    <div class="flex gap-2 mb-2 items-center">
+        <div class="h-fit bg-gray-700 rounded w-16 py-1 px-1">w-2/3</div>
+        <span id="percentage3" class="ml-2 tex-gray-600"></span>
+    </div>
+    <div class="rounded h-8 bg-gray-800 rounded mb-4" id="pDiv3">
+        <div class="w-2/3 h-8 bg-amber-400 rounded" id="cDiv3"></div>
+    </div>
+
+    <div class="flex gap-2 mb-2 items-center">
+        <div class="h-fit bg-gray-700 rounded w-16 py-1 px-1">w-1/2</div>
+        <span id="percentage4" class="ml-2 tex-gray-600"></span>
+    </div>
+    <div class="rounded h-8 bg-gray-800 rounded mb-4" id="pDiv4">
+        <div class="w-1/2 h-8 bg-amber-400 rounded" id="cDiv4"></div>
+    </div>
+
+    <div class="flex gap-2 mb-2 items-center">
+        <div class="h-fit bg-gray-700 rounded w-16 py-1 px-1">w-1/3</div>
+        <span id="percentage5" class="ml-2 tex-gray-600"></span>
+    </div>
+    <div class="rounded h-8 bg-gray-800 rounded mb-4" id="pDiv5">
+        <div class="w-1/3 h-8 bg-amber-400 rounded" id="cDiv5"></div>
+    </div>
+
+    <div class="flex gap-2 mb-2 items-center">
+        <div class="h-fit bg-gray-700 rounded w-16 py-1 px-1">w-1/4</div>
+        <span id="percentage6" class="ml-2 tex-gray-600"></span>
+    </div>
+    <div class="rounded h-8 bg-gray-800 rounded mb-4" id="pDiv6">
+        <div class="w-1/4 h-8 bg-amber-400 rounded" id="cDiv6"></div>
+    </div>
+    
+    <div class="flex gap-2 mb-2 items-center">
+        <div class="h-fit bg-gray-700 rounded w-16 py-1 px-1">w-1/5</div>
+        <span id="percentage7" class="ml-2 tex-gray-600"></span>
+    </div>
+    <div class="rounded h-8 bg-gray-800 rounded mb-2" id="pDiv7">
+        <div class="w-1/5 h-8 bg-amber-400 rounded" id="cDiv7"></div>
+    </div>
+    </section>
+
+
+    <!-- OPACITY -->
+    <section id="opacity">
+    <h1 class="text-lg font-semibold text-amber-400 mt-4 inline-block dark:text-blue-700">15. Opacity</h1>
+    <div id="opacityDiv" class="px-6 py-6 flex flex-wrap gap-3">
+        <div class="flex flex-col items-center ">
+            <div class="rounded bg-amber-400 h-15 w-30 opacity-0"></div>
+            <span class="text-gray-200 text-xs " >opacity-0</span>
+        </div>
+        <div class="flex flex-col items-center ">
+            <div class="rounded bg-amber-400 h-15 w-30 opacity-10"></div>
+            <span class="text-gray-200 text-xs " >opacity-10</span>
+        </div>
+        <div class="flex flex-col items-center ">
+            <div class="rounded bg-amber-400 h-15 w-30 opacity-20"></div>
+            <span class="text-gray-200 text-xs " >opacity-20</span>
+        </div>
+        <div class="flex flex-col items-center ">
+            <div class="rounded bg-amber-400 h-15 w-30 opacity-30"></div>
+            <span class="text-gray-200 text-xs " >opacity-30</span>
+        </div>
+        <div class="flex flex-col items-center ">
+            <div class="rounded bg-amber-400 h-15 w-30 opacity-40"></div>
+            <span class="text-gray-200 text-xs " >opacity-40</span>
+        </div>
+        <div class="flex flex-col items-center ">
+            <div class="rounded bg-amber-400 h-15 w-30 opacity-50"></div>
+            <span class="text-gray-200 text-xs " >opacity-50</span>
+        </div>
+        <div class="flex flex-col items-center ">
+            <div class="rounded bg-amber-400 h-15 w-30 opacity-60"></div>
+            <span class="text-gray-200 text-xs " >opacity-60</span>
+        </div>
+        <div class="flex flex-col items-center ">
+            <div class="rounded bg-amber-400 h-15 w-30 opacity-70"></div>
+            <span class="text-gray-200 text-xs " >opacity-70</span>
+        </div>
+        <div class="flex flex-col items-center ">
+            <div class="rounded bg-amber-400 h-15 w-30 opacity-80"></div>
+            <span class="text-gray-200 text-xs " >opacity-80</span>
+        </div>
+        <div class="flex flex-col items-center ">
+            <div class="rounded bg-amber-400 h-15 w-30 opacity-90"></div>
+            <span class="text-gray-200 text-xs " >opacity-90</span>
+        </div>
+        <div class="flex flex-col items-center ">
+            <div class="rounded bg-amber-400 h-15 w-30 opacity-100"></div>
+            <span class="text-gray-200 text-xs " >opacity-100</span>
+        </div>
+        
+    </div>
+    </section>
+
+
+    <!-- Z-index -->
+    <section id="z-index">
+     <h1 class="text-lg font-semibold text-amber-400 mt-4 inline-block dark:text-blue-700">16. Z-index</h1>
+     <div class="relative h-fit mb-8 p-16 mt-4">
+        <div class="absolute top-0 left-0 rounded w-40 h-20 z-0" id="div1"></div>
+        <div class="absolute top-4 left-10 rounded w-40 h-20 z-20" id="div2"></div>
+        <div class="absolute top-8 left-20 rounded w-40 h-20 z-30" id="div3"></div>
+        <div class="absolute top-12 left-30 rounded w-40 h-20 z-40" id="div4"></div>
+        <div class="absolute top-16 left-40 rounded w-40 h-20 z-50 text-gray-100 flex items-center justify-center" id="div5">z-50</div>
+     </div>
+    </section>
+
+
+     <!-- Transitions and animations -->
+
+    <section id="transition">
+    <h1 class="text-lg font-semibold text-amber-400 mt-4 inline-block dark:text-blue-700">17. Transitions & Animation</h1>
+    <span class="ml-4 text-md text-gray-400 font-base ">hover to test duration</span>
+
+    <span class="mt-4 text-md text-gray-300 block mb-2">DURATION-* (hover each box)</span>
+    <div class="flex gap-4 mb-4">
+
+        <div class="flex items-center bg-amber-400 px-2 py-4 text-gray-900 text-xs font-normal
+                    transition-transform duration-75 hover:scale-[1.2] w-fit h-fit rounded">duration-75</div>
+        <div class="flex items-center bg-amber-400 px-2 py-4 text-gray-900 text-xs font-normal
+                    transition-transform duration-150 hover:scale-[1.2] w-fit h-fit rounded">duration-150</div>
+        <div class="flex items-center bg-amber-400 px-2 py-4 text-gray-900 text-xs font-normal
+                    transition-transform duration-300 hover:scale-[1.2] w-fit h-fit rounded">duration-300</div>
+        <div class="flex items-center bg-amber-400 px-2 py-4 text-gray-900 text-xs font-normal
+                    transition-transform duration-500 hover:scale-[1.2] w-fit h-fit rounded">duration-500</div>
+        <div class="flex items-center bg-amber-400 px-2 py-4 text-gray-900 text-xs font-normal
+                    transition-transform duration-700 hover:scale-[1.2] w-fit h-fit rounded">duration-700</div>
+        <div class="flex items-center bg-amber-400 px-2 py-4 text-gray-900  text-xs font-normal
+                    transition-transform duration-1000 hover:scale-[1.2] w-fit h-fit rounded">duration-1000</div>
+
+    </div>
+
+    <span class="mt-4 text-md text-gray-300 block mb-4">BUILT-IN ANIMATIONS</span>
+
+    <div class="mb-4 flex gap-6">
+
+        <div class="flex flex-col gap-4 items-center">
+            <div class="bg-amber-400 w-20 h-20 rounded-xl
+                       animate-spin duration-75"></div>
+            <span class="text-xs text-gray-200 self-center font-light">animate-spin</span>
+        </div>
+        <div class="flex flex-col gap-4 items-center">
+            <div class="bg-amber-400 w-20 h-20 rounded-xl
+                       animate-ping duration-75"></div>
+            <span class="text-xs text-gray-200 self-center font-light">animate-ping</span>
+        </div>
+        <div class="flex flex-col gap-4 items-center">
+            <div class="bg-amber-400 w-20 h-20 rounded-xl
+                       animate-pulse duration-75"></div>
+            <span class="text-xs text-gray-200 self-center font-light">animate-pulse</span>
+        </div>
+        <div class="flex flex-col gap-4 items-center">
+            <div class="bg-amber-400 w-20 h-20 rounded-xl
+                       animate-bounce duration-75"></div>
+            <span class="text-xs text-gray-200 self-center font-light">animate-bounce</span>
+        </div>
+
+    </div>
+    </section>
+
+    <!-- State Variants -->
+
+    <section id="state">
+    <h1 class="text-lg font-semibold text-amber-400 mt-4 inline-block dark:text-blue-700">18. State Variants</h1>
+    <span class="ml-4 text-md text-gray-400 font-base">hover . focus . active . disabled . odd/even . dark</span>
+
+
+    <!-- sky-700 -->
+     <!-- hover: blue-800 -->
+    <div class="flex mt-4 gap-6 mb-6">
+        <div class="w-fit h-fit px-3 py-2 text-gray-100 text-md font-base bg-sky-700  rounded
+                   hover:bg-sky-900 hover:cursor-pointer">Hover / Focus / Active me</div>
+        <div class="w-fit h-fit px-3 py-2 text-gray-100 text-md font-base bg-sky-700  rounded opacity-80
+                   hover:cursor-not-allowed">
+                Disabled
+        </div>
+    </div>
+
+    <div class="rounded border-1 border-gray-100 w-100 h-fit flex flex-col">
+        <div class="odd:bg-gray-600 even:bg-gray-900 text-md text-gray-100 font-base px-2 py-1">Row 1 . odd</div>
+        <div class="odd:bg-gray-600 even:bg-gray-900 text-md text-gray-100 font-base px-2 py-1">Row 2 . even</div>
+        <div class="odd:bg-gray-600 even:bg-gray-900 text-md text-gray-100 font-base px-2 py-1">Row 3 . odd</div>
+    </div>
+   </section>
+
+
+   <!-- PortFolio Card -->
+    <section id="card">
+    <div class="bg-amber-400 block w-[100%] h-2  mt-8 mb-4 
+                 dark:bg-blue-700 dark:shadow-2xl"></div>
+        <h1 class="flex items-center justify-center text-xl text-amber-400 font-bold mb-8">Portfolio Card</h1>
+
+        <div class="relative m-auto w-fit h-fit p-8 bg-gray-800 rounded-lg 
+                   transition duration-200 dark:bg-slate-50 dark:shadow-xl dark:hover:shadow-2xl">
+                
+            <div class="flex items-center gap-4 mb-8">
+                <img src="folderofImages/lesson1/profilePicture.png" alt="" class="w-20 h-20 rounded-full inline"> 
+                <div class="flex flex-col flex pt-2 items-center gap-4 inline-block mr-80"> 
+                    <span class="text-amber-400 text-lg font-black block dark:text-stone-950">Amrani Sarah</span>
+                    <span class="text-gray-100 text-md font-semibold block dark:text-blue-700">Cyber Security Student</span>
+                </div>
+            </div>
+            <div class="absolute top-5 right-5 h-fit w-fit bg-amber-400 ml-20 px-2 py-1 rounded-xl text-gray-900 text-xs">PRO</div>
+        
+            <span class="text-stone-500 text-lg font-semibold">Student at NSCS Higher school - Joined Hsam WEBDEV pack formation</span>
+
+            <div class="flex flex-wrap gap-4 my-5">
+                <div class="w-50 h-fit bg-stone-200 flex flex-col items-center gap-2 px-4 py-2 rounded-xl">
+                    <span class="text-stone-950 font-black text-lg">5</span>
+                    <span class="text-stone-500 font-normal text-md">Years</span>
+                </div>
+                <div class="w-50 h-fit bg-stone-200 flex flex-col items-center gap-2 px-4 py-2 rounded-xl">
+                    <span class="text-stone-950 font-black text-lg">12</span>
+                    <span class="text-stone-500 font-normal text-md">Modules</span>
+                </div>
+                <div class="w-50 h-fit bg-stone-200 flex flex-col items-center gap-2 px-4 py-2 rounded-xl">
+                    <span class="text-stone-950 font-black text-lg">4</span>
+                    <span class="text-stone-500 font-normal text-md">Labs</span>
+                </div>
+            </div>
+
+            <div class="flex gap-5">
+                <div class="flex justify-center px-10 py-2 rounded-lg bg-amber-400 text-stone-950 dark:text-slate-50 dark:bg-blue-700 w-[85%]
+                       transition-transform duration-100 hover:scale-[1.1] hover:cursor-pointer">Follow</div>
+                <div class="bg-stone-100 text-gray-600 hover:cursor-not-allowed rounded-lg px-3 py-2 opacity-60">Disabled</div>
+            </div>
+        </div>
+       </section>
+    <script src="javaScript.js"></script>
+    <script src="javaScript2.js"></script>
+</body>
+</html>
+
+
+<!-- mb: margin bottom -->
+<!-- p: padding -->
